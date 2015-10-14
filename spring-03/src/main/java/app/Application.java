@@ -38,7 +38,7 @@ public class Application implements CommandLineRunner{
         // Create a data schema
         jdbcTemplate.execute("DROP TABLE customers IF EXISTS");
         jdbcTemplate.execute("CREATE TABLE customers (" +
-                    "id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255)+");
+                    "id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
         
         // split up the whole names into an array of first/last names
         List<Object[]> splitUpNames = Arrays.asList("Winnie Woo", "Jeff Dean", "Josh Bloch", "Winnie Pooh").stream()
