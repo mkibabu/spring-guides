@@ -1,4 +1,4 @@
-package domain;
+package val;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
