@@ -24,3 +24,31 @@ post offices. Exchanges then distribute message copies to *queues* using rules c
 to the queues, or the consumers fetch/pull messages from the quese(s) on demand.
 
 Upon receipt of the mesage, the consumer sends an ACK to the broker.
+
+A more in-depth look is as follows:
+Brokers (e.g. RabbitMQ) use two key components to send messages from producers to
+consumers: an exchange and a queue. The publisher or consumer creates the exchange
+and makes the name public. The consumer then creates a queue and attaches it to an
+exchange. Messages received by the exchange are matched to a particular queue via
+rules (bindings) defined by the consumer.
+
+An AMPQ message contains three sections:
+* header
+* properties
+* byte[] data
+ The data and properties are application-specific, but the headers are defined by
+ AMPQ specification. The headers are key-value pairs, and the one that binds a
+ message to a particular queue is the *routing-key*. Each queue specifies its own
+ binding-key property, and messages are routed to queues whose binding keys match
+ the routing-key value in their header.
+
+ The exchange routes the messages to the queues. There are four kinds of exchanges,
+ depending on how the exahange uses the queue's binding-key and a message's routing-key:
+ * Direct - the bnding key must match the routing key exactly - no wildcard support.
+ * Topic - Wildcards are allowed in the binding key; '#' matches zero or more dot-limited
+ words, and ' * ' matches exactly one word.
+ * Fanout - The routing and binding keys are ignored: all messages go to all subscribed
+ queues.
+ * Headers - Routes on multiple attributes, some of which can be expressed in ways
+ less restrictive than topic exchange headers. They ignore the routing key and use
+ whatever header attributes are specified.

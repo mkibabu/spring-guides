@@ -35,16 +35,30 @@ public class Application implements CommandLineRunner {
     @Autowired
     RabbitTemplate rabbitTemplate;
     
+    /**
+     * Creates the message queue.
+     * @return
+     */
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
     }
     
     @Bean
+    /**
+     * Creates the AMPQ topic exchange.
+     * @return
+     */
     TopicExchange exchange() {
         return new TopicExchange("spring-boot-exchange");
     }
     
+    /**
+     * Binds the exchange to the queue.
+     * @param queue
+     * @param exchange
+     * @return
+     */
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(queueName);
