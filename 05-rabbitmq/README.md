@@ -5,3 +5,4 @@ Protocol's RabbitTemplate and subscribes to the message on a POJO using MessageL
 Project documentation at [Messaging with RabbitMQ] (https://spring.io/guides/gs/messaging-rabbitmq/).
 
 RabbitMQ is an AMPQ server. More on RabbitMQ can be found on the [RabbitMQ website] (http://www.rabbitmq.com/)
+
