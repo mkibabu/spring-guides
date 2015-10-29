@@ -18,6 +18,13 @@ import org.springframework.context.annotation.Bean;
 
 import receiver.Receiver;
 
+/*
+ * Configures a message listener container, and declares the queue, exchange
+ * and binding between them. Uses a RabbitTemplate to send messages, and
+ * registers our Receiver with the message listener container to receive messages.
+ * The registration container drives both, allowing them to connect to the rabbitMQ
+ * server.
+ */
 public class Application implements CommandLineRunner {
 
     final static String queueName = "spring-boot";
