@@ -13,6 +13,7 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 
@@ -25,6 +26,7 @@ import receiver.Receiver;
  * The registration container drives both, allowing them to connect to the rabbitMQ
  * server.
  */
+@SpringBootApplication
 public class Application implements CommandLineRunner {
 
     final static String queueName = "spring-boot";
