@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Simple POJO that defines a method for receiving messages.
+ */
 public class Receiver {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Receiver.class);
@@ -18,7 +21,7 @@ public class Receiver {
 	}
 	
 	public void receiveMessage(String message) {
-		LOG.info("Received ," + message + ">");
+		LOG.info("Received <" + message + ">");
 		latch.countDown();
 	}
 	
